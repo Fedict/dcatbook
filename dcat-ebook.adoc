@@ -115,30 +115,55 @@ Search engines like Google
 
 === DCAT 2
 
+DCAT version 2 adds better support for (web)services
+
 === DCAT 3
 
+DCAT version 3 focusses on series of datasets
+
 == DCAT-AP
+
+https://semiceu.github.io/DCAT-AP/releases/3.0.0/
 
 == Various specializations
 
 === BRegDCAT-AP
 
+https://github.com/SEMICeu/BregDCAT-AP
+
+=== CiteDCAT-AP
+
+https://ec-jrc.github.io/datacite-to-dcat-ap/
+
 === DCAT-AP-JRC
+
+https://ec-jrc.github.io/dcat-ap-jrc/
 
 === DCAT-AP HvD
 Implementing Regulation 2023/138/EU of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use
 
+https://semiceu.github.io/DCAT-AP/releases/2.2.0-hvd/
+
 === GeoDCAT-AP
 Directive 2007/2/EC of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)
 
+https://semiceu.github.io/GeoDCAT-AP/releases/
+
 === HealthDCAT-AP
+https://healthdcat-ap.github.io/
 
 === MLDCAT-AP
+
+https://semiceu.github.io/MLDCAT-AP/releases/2.0.0/
 
 === MobilityDCAT-AP
 Directive 2010/40/EU of 7 July 2010 on the framework for the deployment of Intelligent Transport Systems in the field of road transport and for interfaces with other modes of transport (ITS)
 
+https://w3id.org/mobilitydcat-ap/releases/
+
 === StatDCAT-AP
+
+https://github.com/SEMICeu/StatDCAT-AP
 
 .DRAFT
 ----
