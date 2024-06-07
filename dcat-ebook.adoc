@@ -149,6 +149,10 @@ Directive 2007/2/EC of 14 March 2007 establishing an Infrastructure for Spatial 
 
 https://semiceu.github.io/GeoDCAT-AP/releases/
 
+=== GNSS-DCAT-AP
+
+https://zenodo.org/records/10955559
+
 === HealthDCAT-AP
 https://healthdcat-ap.github.io/
 
