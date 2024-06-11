@@ -144,6 +144,10 @@ Implementing Regulation 2023/138/EU of 21 December 2022 laying down a list of sp
 
 https://semiceu.github.io/DCAT-AP/releases/2.2.0-hvd/
 
+=== EPOS-DCAT-AP
+
+https://epos-eu.github.io/EPOS-DCAT-AP/
+
 === GeoDCAT-AP
 Directive 2007/2/EC of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)
 
