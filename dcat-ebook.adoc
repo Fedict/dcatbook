@@ -1,8 +1,24 @@
-= Introduction to DCAT-AP
-Bart Hanssens
-v1.0
+= The DCAT-AP book
+:author: Bart Hanssens
+:email: <bart.hanssens@bosa.fgov.be>
+:url-repo: https://github.com/Fedict/dcatbook/
+:revdate: 2024-06-13
+:source-highlighter: roug
+:license-url: https://creativecommons.org/public-domain/cc0/
+:license-title: CC0
+:docinfo: shared
 :doctype: docbook
 :toc: left
+
+== About the author
+
+Bart Hanssens is the architect of the Belgian data portal data.gov.be.
+While the front-end of this portal may not be the most attractive site in existence,
+the back-end was designed to work with DCAT-AP since 2014,
+collecting and harmonizing metadata from various local, regional and federal sources.
+
+Bart contributed to the DCAT-AP specification, and the open source linked data library Eclipse RDF4J.
+
 
 = Introduction to linked data
 
@@ -36,13 +52,16 @@ One way to make sure identifiers are unique, is to use a common database or regi
 
 Luckily there is a decentralized solution, based on domain names.
 
+===
+
+URN, URI, IRI
 
 ==== URI and URLs
 
 
 [NOTE]
 ====
-`http://example.com` and `https://example.com` are *not* assumed to be the same identifier.
+`http://example.com` and `https://example.com` (note the `s`) are *not* the same identifier.
 ====
 
 ==== Dereferencable URLs
@@ -59,33 +78,46 @@ A URL does not _have_ to be dereferencable in order to be used as an identifier,
 
 A persistent URL (or PURL in short) is nothing more (and nothing less) than an URL that does not change.
 For how long ? Basically forever... once a PURL has been created, it is supposed to remain available and 
-unchanged until eternity.
+unchanged until the dawn of time.
+
+=== Beyond three ...
+
+
+Turns out there is a shortcut: literal values can take a language tag _or_ a datatype, but not both.
+
+It also doesn't work that way for resources
 
 === File formats
 
-Data contained in RDF can be _serialized_ to several file formats
+RDF data can be _serialized_ to several file formats
 
 This may come in handy when dealing with 
 
-There is, however 
+
 
 ==== N-Triples
 
 This is a very simple text format, with every line containing one unabbreviated statement.
 It can easily be streamed, and works quite nice with well-know command-line tools like `grep` and `awk`.
-The downside is that N-Tripes is quite verbose,
+
+The downside is that N-Triples files are quite verbose,
 since the format does not allow the use of prefixes to abbreviate commonly used namespaces,
 nor does it provide options to group or structure statements in a visually appealing way ("pretty-printing").
 
 ==== Turtle
 
-Turtle is slightly more complicated, but can be much more compact and easier to read.
+Turtle is slightly more complicated, but is much more compact and easier to read.
 Prefixes can be used, and some syntactic sugar is available to produce smaller and better looking files.
-It is therefore often used for files that are likely to be viewed by data experts, like data models and thesauri.
+It is therefore often used for files that are likely to be viewed by subject experts, e.g. data models and thesauri.
 
 ==== RDF/XML
 
 RDF/XML was one of the first serialization formats, which is not
+
+The format is quite generic, which means that - even for small amounts of data - 
+there are multiple ways to express the 
+
+As with general XML, whitespace and indentation does not matter
 
 ==== JSON-LD
 
@@ -97,21 +129,38 @@ It is, however, becoming a less popular solution.
 
 ==== JSON-LD in HTML
 
-Search engines like Google 
+Search engines like Google benefit from structured data, and can use some 
+
+See https://developers.google.com/search/docs/appearance/structured-data/dataset
 
 == Modelling
 
+=== Classes and properties
+
+
 === RDFS
+
+RDF Schema is 
+
 === OWL
+
+Web Ontology Language OWL.footnote[Yes, the abbreviation should have been `WOL`, but `OWL` sounds better] is much more complex
+
+=== Reasoning
+
 
 == Validating
 
 === SHACL
 
-= Data catalogs
+Validation is relative new
 
-== Data Catalog (DCAT)
-=== DCAT
+
+= Data Catalog (DCAT)
+
+== DCAT
+
+Is a very simple, based on <<DCTERMS>>
 
 === DCAT 2
 
@@ -119,15 +168,49 @@ DCAT version 2 adds better support for (web)services
 
 === DCAT 3
 
-DCAT version 3 focusses on series of datasets
+DCAT version 3 focusses on documenting series of related datasets.
+
+It is up to decide to the publishere of the datasets 
+
 
 == DCAT-AP
 
 https://semiceu.github.io/DCAT-AP/releases/3.0.0/
 
+
+=== Catalog
+
+
+
+=== Dataset
+
+==== Describing the dataset
+
+`dct:title`
+
+`dct:description`
+
+`dcat:keyword`
+`dcat:theme`
+
+==== Licenses and rights
+
+
+=== Distribution
+
+==== Accessing and downloading
+
+`dcat:accessURL`
+`dcat:downloadURL`
+
+=== Dataservice
+
+
+
 == Various specializations
 
 === BRegDCAT-AP
+
 
 https://github.com/SEMICeu/BregDCAT-AP
 
@@ -172,6 +255,119 @@ https://w3id.org/mobilitydcat-ap/releases/
 === StatDCAT-AP
 
 https://github.com/SEMICeu/StatDCAT-AP
+
+== National variants
+
+=== Belgium
+DCAT-AP-BE
+DCAT-AP-VL
+
+=== Finland
+https://www.avoindata.fi/en/dcat-ap
+
+=== Germany
+DCAT-AP.DE
+
+=== Italy: DCAT-AP_IT
+https://www.dati.gov.it/content/dcat-ap-it-v10-profilo-italiano-dcat-ap-0
+
+=== The Netherlands: DCAT-AP-DONL
+https://dataoverheid.github.io/dcat-ap-donl/
+
+=== Norway: DCAT-AP-NO
+https://data.norge.no/specification/dcat-ap-no
+
+=== Poland: DCAT-AP-PL
+https://dane.gov.pl/dcat-ap-pl/
+
+=== Spain: DCAT-AP-Spain
+
+=== Sweden: DCAT-AP-SE
+https://docs.dataportal.se/dcat/en/
+
+=== Switserland: DCAT-AP CH
+https://www.dcat-ap.ch/
+
+= Vocabularies
+
+== ADMS
+
+== DCTERMS
+
+Dublin Core Terms
+
+== DQV
+
+Data Quality Vocabulary
+
+== FOAF
+
+Friend-of-a-Friend
+
+== LOCN
+
+== ORG
+
+
+
+== ROV
+
+== Schema.org
+
+== SKOS
+
+
+It is very well suited to publish code lists and 
+
+A _term_ (entry in a thesauri) 
+`skos:Concept`
+
+The `skos:broader` (and the inverse property `skos:narrower`) is used to create hierachical structures.
+
+Every term should have a preferred label `skos:prefLabel` (possibly in multiple languages), 
+and may have multiple alternative labels `skos:altLabel` 
+
+It is also possible to compare terms in one thesaurus with terms belonging to another thesaurus,
+using the `skos:broadMatch`, `skos:narrowMatch`, `skos:closeMatch` and `skos:exactMatch` properties.
+
+
+The EU Publications Office publishes various code lists and thesauri in SKOS,
+ranging from simple lists like the https://op.europa.eu/en/web/eu-vocabularies/authority-tables[Authority tables]
+to massive thesauri like https://op.europa.eu/en/web/eu-vocabularies/thesauri[EUROVOC]
+
+== VCARD
+
+== XSD
+
+[appendix]
+= Common mistakes
+
+== Not using the EU PO controlled lists
+
+Some portals claim to adhere to DCAT-AP, but are in fact producing DCAT.
+
+== Incorrect date or duration formats
+
+
+== Mixing IDs and URLs
+
+This can lead to undesired side-effects when quering / combining data.
+
+
+== Not setting explicit language tags
+
+
+= Tools
+
+== 
+
+To find the preferred prefix and/or namespaces: https://prefix.cc/
+
+==
+
+
+=== 
+
 
 .DRAFT
 ----
