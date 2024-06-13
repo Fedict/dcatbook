@@ -41,10 +41,6 @@ written down as a combination 3 parts (hence the name _triples_).
 
 `<subject> <predicate> <object>`
 
-Statements are just that, they are not guaranteed to be true, and anyone can make any statement on whatever topic.
-
-WHich is, of course, just like the human-friendly World Wide Web works: 
-anyone can create webpages and link to other pages, because that's the whole point of the WWW in the first place...
 
 === Unique identifiers
 
@@ -138,16 +134,20 @@ See https://developers.google.com/search/docs/appearance/structured-data/dataset
 === Classes and properties
 
 
+
 === RDFS
 
 RDF Schema is 
 
 === OWL
 
-Web Ontology Language OWL.footnote[Yes, the abbreviation should have been `WOL`, but `OWL` sounds better] is much more complex
+Web Ontology Language (OWL) is much more complex
+
+Yes, the abbreviation should have been `WOL`, but `OWL` sounds better 
 
 === Reasoning
 
+If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck.
 
 == Validating
 
@@ -175,10 +175,12 @@ It is up to decide to the publishere of the datasets
 
 == DCAT-AP
 
-https://semiceu.github.io/DCAT-AP/releases/3.0.0/
+See also https://semiceu.github.io/DCAT-AP/releases/3.0.0/
 
 
 === Catalog
+
+==== Describing the catalog
 
 
 
@@ -212,24 +214,24 @@ https://semiceu.github.io/DCAT-AP/releases/3.0.0/
 === BRegDCAT-AP
 
 
-https://github.com/SEMICeu/BregDCAT-AP
+See also https://github.com/SEMICeu/BregDCAT-AP
 
 === CiteDCAT-AP
 
-https://ec-jrc.github.io/datacite-to-dcat-ap/
+See also https://ec-jrc.github.io/datacite-to-dcat-ap/
 
 === DCAT-AP-JRC
 
-https://ec-jrc.github.io/dcat-ap-jrc/
+See also https://ec-jrc.github.io/dcat-ap-jrc/
 
 === DCAT-AP HvD
 Implementing Regulation 2023/138/EU of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use
 
-https://semiceu.github.io/DCAT-AP/releases/2.2.0-hvd/
+See also https://semiceu.github.io/DCAT-AP/releases/2.2.0-hvd/
 
 === EPOS-DCAT-AP
 
-https://epos-eu.github.io/EPOS-DCAT-AP/
+See also https://epos-eu.github.io/EPOS-DCAT-AP/
 
 === GeoDCAT-AP
 Directive 2007/2/EC of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)
@@ -238,23 +240,25 @@ https://semiceu.github.io/GeoDCAT-AP/releases/
 
 === GNSS-DCAT-AP
 
-https://zenodo.org/records/10955559
+See also https://zenodo.org/records/10955559
 
 === HealthDCAT-AP
-https://healthdcat-ap.github.io/
+
+See also https://healthdcat-ap.github.io/
 
 === MLDCAT-AP
 
-https://semiceu.github.io/MLDCAT-AP/releases/2.0.0/
+See also https://semiceu.github.io/MLDCAT-AP/releases/2.0.0/
 
 === MobilityDCAT-AP
-Directive 2010/40/EU of 7 July 2010 on the framework for the deployment of Intelligent Transport Systems in the field of road transport and for interfaces with other modes of transport (ITS)
+Directive 2010/40/EU of 7 July 2010 on the framework for the deployment of 
+Intelligent Transport Systems in the field of road transport and for interfaces with other modes of transport (ITS)
 
-https://w3id.org/mobilitydcat-ap/releases/
+See also https://w3id.org/mobilitydcat-ap/releases/
 
 === StatDCAT-AP
 
-https://github.com/SEMICeu/StatDCAT-AP
+See also https://github.com/SEMICeu/StatDCAT-AP
 
 == National variants
 
@@ -294,15 +298,33 @@ https://www.dcat-ap.ch/
 
 == DCTERMS
 
-Dublin Core Terms
+[cols="1h,1"]
+|===
+|Full name | Dublin Core Metadata Initiative Terms
+|See also | https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
+|===
+
+
+Most people will associate Dublin with the capital of Ireland, 
+but in this case it refers to Dublin in Ohio, USA.
 
 == DQV
 
-Data Quality Vocabulary
+[cols="1h,1"]
+|===
+|Full name | Data Quality Vocabulary
+|See also | https://www.w3.org/TR/vocab-dqv/
+|===
+
+
 
 == FOAF
 
-Friend-of-a-Friend
+[cols="1h,1"]
+|===
+|Full name | Friend-of-a-Friend
+|See also | http://xmlns.com/foaf/spec/
+|===
 
 == LOCN
 
@@ -316,7 +338,6 @@ Friend-of-a-Friend
 
 == SKOS
 
-
 It is very well suited to publish code lists and 
 
 A _term_ (entry in a thesauri) 
@@ -324,8 +345,14 @@ A _term_ (entry in a thesauri)
 
 The `skos:broader` (and the inverse property `skos:narrower`) is used to create hierachical structures.
 
+=== Labels
+
 Every term should have a preferred label `skos:prefLabel` (possibly in multiple languages), 
 and may have multiple alternative labels `skos:altLabel` 
+
+In addition - or instead of a - prefLabel
+
+=== Mapping to other thesauri
 
 It is also possible to compare terms in one thesaurus with terms belonging to another thesaurus,
 using the `skos:broadMatch`, `skos:narrowMatch`, `skos:closeMatch` and `skos:exactMatch` properties.
@@ -335,14 +362,21 @@ The EU Publications Office publishes various code lists and thesauri in SKOS,
 ranging from simple lists like the https://op.europa.eu/en/web/eu-vocabularies/authority-tables[Authority tables]
 to massive thesauri like https://op.europa.eu/en/web/eu-vocabularies/thesauri[EUROVOC]
 
+See also https://www.w3.org/TR/skos-primer/
+
 == VCARD
+
+See also https://www.w3.org/TR/vcard-rdf/
 
 == XSD
 
-[appendix]
-= Common mistakes
 
-== Not using the EU PO controlled lists
+
+[appendix]
+= Common mistakes in DCAT-AP
+
+
+== Not using the EU Publications Office controlled lists
 
 Some portals claim to adhere to DCAT-AP, but are in fact producing DCAT.
 
