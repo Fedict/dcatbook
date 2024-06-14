@@ -1,4 +1,4 @@
-= The DCAT-AP book
+= The DCAT-AP book: Everything you never wanted to know about data catalogs, but had to learn anyway
 :author: Bart Hanssens
 :email: <bart.hanssens@bosa.fgov.be>
 :url-repo: https://github.com/Fedict/dcatbook/
@@ -10,7 +10,20 @@
 :doctype: docbook
 :toc: left
 
-== About the author
+.DRAFT
+----
+This document is only a rough draft.
+----
+
+[preface]
+= Preamble
+
+=== About this book
+ 
+The intention is not to be an exhaustive reference of each and every detail,
+but to be a practical guide for developers of data portals and other interested parties.
+
+=== About the author
 
 Bart Hanssens is the architect of the Belgian data portal data.gov.be.
 While the front-end of this portal may not be the most attractive site in existence,
@@ -18,7 +31,6 @@ the back-end was designed to work with DCAT-AP since 2014,
 collecting and harmonizing metadata from various local, regional and federal sources.
 
 Bart contributed to the DCAT-AP specification, and the open source linked data library Eclipse RDF4J.
-
 
 = Introduction to linked data
 
@@ -36,16 +48,34 @@ Resource Description Framework
 
 === Statements and triples ===
 
-RDF is about making _statements_, which are basic sentences to describe something.
-written down as a combination 3 parts (hence the name _triples_).
+RDF is about making _statements_, which are very basic sentences to describe something,
+written down as a combination of exactly 3 parts (hence the name _triples_):
 
 `<subject> <predicate> <object>`
 
-=== Beyond three ...
+.Example of statements
+====
+....
+<John> <buys an> <apple>
+<Jane> <is born in> <Paris>
+....
+====
 
-Turns out there is a shortcut: literal values can take a language tag _or_ a datatype, but not both.
+Less is more...
 
-It also doesn't work that way for resources
+So by design it is possible to express _everything_, albeit not necessarily in the most concise way.
+For example, it requires multiple statements to express a sentence like 
+`John has been working for ACME Corp since September 2015`
+
+Something like:
+....
+<John> <is an employee in> <Contract>
+<ACME Corp> <is an employer in> <Contract>
+<Contract> <starts in> "9/2015"
+....
+
+This also shows that statements can be linked, or more formally, 
+the `object` of one statement can be the `subject` of other statements and vice versa.
 
 === Unique identifiers
 
@@ -57,30 +87,58 @@ Luckily there is a decentralized solution, based on domain names.
 
 ==== URI and URLs
 
+[NOTE]
+====
+With the exception of the `example.com` domain for documentation purposes, 
+it is considered bad practice to "create" URIs in someone elses domain.
+====
 
 [NOTE]
 ====
 `http://example.com` and `https://example.com` (note the `s`) are *not* the same identifier.
 ====
 
-==== Dereferencable URLs
+==== Dereferencable URIs
 
-Dereferencable is a fancy way to say that a URL will actually return something meaningful when a browser 
-or another tool accesses it via HTTP(S).
+Dereferencable is a fancy way to say that a URI will actually return something meaningful when a browser 
+or another tool accesses it.
 
-Using the good old HTTP `Accept` header, it is possible to make the distinction 
-
+In most cases, this is via a  HTTP GET request. Using the good old HTTP `Accept` header, 
+it is possible to 
 
 [NOTE]
 ====
-A URL does not _have_ to be dereferencable in order to be used as an identifier, but it helps.
+A URI does not _have_ to be dereferencable in order to be useful, but it helps.
 ====
+
 
 ==== Persistent URLs (PURL)
 
 A persistent URL (or PURL in short) is nothing more (and nothing less) than an URL that does not change.
 For how long ? Basically forever... once a PURL has been created, it is supposed to remain available and 
 unchanged until the dawn of time.
+
+=== Literals
+
+Not everything has to be an identifier, often a simple value or _literal_ will do just fine:
+book titles, timestamps, house numbers... are just a few random examples.
+
+==== Language tags and data types
+
+Now, a very common use case for titles and descriptions is to have translations,
+or at least an indication of the language.
+
+
+Turns out there is a shortcut: literal values can take a language tag _or_ a datatype (not both).
+
+
+=== ... and beyond that
+
+In a _graph_ or sometimes called a _context_ 
+
+And more recently, RDF* (RDF-Star)
+
+
 
 == Modelling
 
@@ -113,21 +171,19 @@ Domain:
 
 Multiple domains are allowed.
 
-Some properties are very generic, e.g. a `name` property makes sense on a `Person` class,
+Some properties are indeed very generic, e.g. a `name` property makes sense on a `Person` class,
 but can be used on `Organizations` and `Images` as well.
 
 
 [NOTE]
 ====
-Unlike object-oriented programming, a property doesn't really belong to a class.
+Unlike object-oriented programming, a property doesn't really belong to a specific class.
 
 Which also means it's not a good idea to use the class name as part of the property name, 
 e.g. `MyClass_Property`
 ====
 
-
 Range:
-
 
 The class a range points to, does not have to be part of the same vocabulary:
 it is quite common to point to classes from well-known vocabularies.
@@ -141,11 +197,18 @@ Yes, the abbreviation should have been `WOL`, but `OWL` sounds so much better...
 
 === Reasoning
 
-Vocabularies and ontologies do not magically 
-
  If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck.
 
-== Validating
+Vocabularies and ontologies do not magically turn RDF data into pools of knowledge.
+It requires special tools to 
+
+== Validation
+
+While reasoners can be used to detect some inconsistencies in data, 
+they don't quite fit the bill as a general data quality tool.
+
+Even worse, reasoners may add statements and may come to logical but surprising results, 
+which is typically not the intended behavior when performing low-level quality checks.
 
 === SHACL
 
@@ -456,11 +519,6 @@ To find the preferred prefix and/or namespaces: https://prefix.cc/
 
 ==
 
+[index]
+== Index
 
-=== 
-
-
-.DRAFT
-----
-This document is only a rough draft.
-----
