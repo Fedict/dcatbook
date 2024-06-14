@@ -41,6 +41,11 @@ written down as a combination 3 parts (hence the name _triples_).
 
 `<subject> <predicate> <object>`
 
+=== Beyond three ...
+
+Turns out there is a shortcut: literal values can take a language tag _or_ a datatype, but not both.
+
+It also doesn't work that way for resources
 
 === Unique identifiers
 
@@ -48,9 +53,7 @@ One way to make sure identifiers are unique, is to use a common database or regi
 
 Luckily there is a decentralized solution, based on domain names.
 
-===
-
-URN, URI, IRI
+=== URN, URI, IRI
 
 ==== URI and URLs
 
@@ -62,8 +65,11 @@ URN, URI, IRI
 
 ==== Dereferencable URLs
 
-Dereferencable is a fancy word to say that a URL will actually return something meaningful when a browser 
-or another tool wants to check it out.
+Dereferencable is a fancy way to say that a URL will actually return something meaningful when a browser 
+or another tool accesses it via HTTP(S).
+
+Using the good old HTTP `Accept` header, it is possible to make the distinction 
+
 
 [NOTE]
 ====
@@ -76,12 +82,76 @@ A persistent URL (or PURL in short) is nothing more (and nothing less) than an U
 For how long ? Basically forever... once a PURL has been created, it is supposed to remain available and 
 unchanged until the dawn of time.
 
-=== Beyond three ...
+== Modelling
+
+=== Classes and properties
 
 
-Turns out there is a shortcut: literal values can take a language tag _or_ a datatype, but not both.
+=== Vocabularies and ontologies
 
-It also doesn't work that way for resources
+A _vocabulary_ is a well-defined collection of classes and properties.
+
+An _ontology_ is a vocabulary on steroids: not only does it contain definitions,
+it also adds some constraints.
+
+=== Reusing vocabularies
+
+Vocabularies can be mixed and matched.
+In fact, when developping a new vocabulary, it is a best practice to reuse existing ones. 
+This reduces the learning curve and increases interoperability 
+
+https://lov.linkeddata.es/[Linked Open Vocabularies] portal
+
+Vocabularies produced by/for administrations of the EU can be found on 
+https://joinup.ec.europa.eu/collection/semic-support-centre[SEMIC]
+
+=== RDFS
+
+RDF Schema is 
+
+Domain:
+
+Multiple domains are allowed.
+
+Some properties are very generic, e.g. a `name` property makes sense on a `Person` class,
+but can be used on `Organizations` and `Images` as well.
+
+
+[NOTE]
+====
+Unlike object-oriented programming, a property doesn't really belong to a class.
+
+Which also means it's not a good idea to use the class name as part of the property name, 
+e.g. `MyClass_Property`
+====
+
+
+Range:
+
+
+The class a range points to, does not have to be part of the same vocabulary:
+it is quite common to point to classes from well-known vocabularies.
+
+
+=== OWL
+
+Web Ontology Language (OWL) is much more complex
+
+Yes, the abbreviation should have been `WOL`, but `OWL` sounds so much better... 
+
+=== Reasoning
+
+Vocabularies and ontologies do not magically 
+
+ If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck.
+
+== Validating
+
+=== SHACL
+
+Validation is relative new
+
+
 
 === File formats
 
@@ -110,8 +180,8 @@ It is therefore often used for files that are likely to be viewed by subject exp
 
 RDF/XML was one of the first serialization formats, which is not
 
-The format is quite generic, which means that - even for small amounts of data - 
-there are multiple ways to express the 
+The format is quite generic and flexible, which means that - even for small amounts of data - 
+there are multiple ways to express 
 
 As with general XML, whitespace and indentation does not matter
 
@@ -129,31 +199,15 @@ Search engines like Google benefit from structured data, and can use some
 
 See https://developers.google.com/search/docs/appearance/structured-data/dataset
 
-== Modelling
+=== Triple stores
 
-=== Classes and properties
+RDF statements are often stored in specialized data stores, called _triple stores_.
 
+Most of these triple stores offer import/export from multiple file formats,
+and create/read/update/delete operations via the SPARQL query and update language.
 
-
-=== RDFS
-
-RDF Schema is 
-
-=== OWL
-
-Web Ontology Language (OWL) is much more complex
-
-Yes, the abbreviation should have been `WOL`, but `OWL` sounds better 
-
-=== Reasoning
-
-If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck.
-
-== Validating
-
-=== SHACL
-
-Validation is relative new
+It is, however, not always necessary to use a triple store to generate RDF data.
+Sometimes a database and a template engine will do just fine.
 
 
 = Data Catalog (DCAT)
@@ -170,10 +224,13 @@ DCAT version 2 adds better support for (web)services
 
 DCAT version 3 focusses on documenting series of related datasets.
 
-It is up to decide to the publishere of the datasets 
+It is up to the publishere of the datasets to decide what "related" means: 
+it could be a collection of statistics published throughout the years, for instance, 
+or a set of road maps, ...
 
 
 == DCAT-AP
+
 
 See also https://semiceu.github.io/DCAT-AP/releases/3.0.0/
 
