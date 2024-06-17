@@ -493,24 +493,64 @@ See also https://www.w3.org/TR/vcard-rdf/
 
 
 [appendix]
+= Lists of identifiers
+
+=== Persons
+
+It is sometimes useful to add metadata about individuals to datasets.
+Researchers, for instance, often want to be mentioned as the author of - or a contributor to - a dataset or scientific paper.
+
+Unfortunately names are unlikely to be unique - just imagine how many `John Smith`'s there are -
+so it's not always possible to 
+
+
+=== Organizations
+
+
+Opencorporates.org
+
+=== File formats
+
+DCAT-AP requires the use of the Publication Office's 
+https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/file-type[File type autority table] 
+for `dct:format` URIs
+
+However, the dcat properties `dcat:mediaType`, `dcat:compressFormat`, `dcat:packageFormat` should all be using URIS of registered IANA mimetypes.
+
+Note that there isn't always a registered IANA mimetype when there is an entry in the Publication Offices's authority table, or vice versa.
+
+In general, the Publication Office is quite flexible in adding new file formats.
+Everyone can make suggestions via the `Contribut`] button on the
+https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/file-type[File type overview page].
+
+IANA procedures are a bit more strict, especially when it comes down to registering vendor-specific formats,
+but they too offer a https://www.iana.org/form/media-types[webform] to submit suggestions.
+
+=== Geographic areas
+
+Geonames.org
+
+[appendix]
 = Common mistakes in DCAT-AP
 
 
-== Not using the EU Publications Office controlled lists
+=== Not using the EU Publications Office controlled lists
 
 Some portals claim to adhere to DCAT-AP, but are in fact producing DCAT.
 
-== Incorrect date or duration formats
+=== Incorrect date or duration formats
 
 
-== Mixing IDs and URLs
+=== Mixing contact point IDs and organization IDs
+
+=== Mixing IDs and URLs
 
 This can lead to undesired side-effects when quering / combining data.
 
 
-== Not setting explicit language tags
+=== Not setting explicit language tags
 
-
+[appendix]
 = Tools
 
 == 
