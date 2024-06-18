@@ -245,7 +245,16 @@ RDF data can be _serialized_ to several file formats
 
 This may come in handy when dealing with 
 
+Let's compare a few common file formats using following set of statements
 
+.Set of statements
+====
+....
+<vCard> <is a> <Standard>
+<vCard> <has label> "Ontology for vCard"@en 
+<vCard> <is published on> "22 May 2014"
+....
+====
 
 ==== N-Triples
 
@@ -256,20 +265,67 @@ The downside is that N-Triples files are quite verbose,
 since the format does not allow the use of prefixes to abbreviate commonly used namespaces,
 nor does it provide options to group or structure statements in a visually appealing way ("pretty-printing").
 
+.N-Triples file
+====
+....
+<http://www.w3.org/2006/vcard/ns#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/Standard> .
+<http://www.w3.org/2006/vcard/ns#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#label> "Ontology for vCard"@en .
+<http://www.w3.org/2006/vcard/ns#> <http://purl.org/dc/terms/issued> "2014-05-14"^^<http://www.w3.org/2001/XMLSchema#date> .
+....
+====
+
 ==== Turtle
 
-Turtle is slightly more complicated, but is much more compact and easier to read.
-Prefixes can be used, and some syntactic sugar is available to produce smaller and better looking files.
+Turtle is a slightly more complicated format, but is much more compact and easier to read.
+Namespace prefixes can be used, and some syntactic sugar is available to produce smaller and better looking files.
+
 It is therefore often used for files that are likely to be viewed by subject experts, e.g. data models and thesauri.
+
+The following example shows how the statements can be (but don't have to be) nicely grouped together,
+how namespaces prefixes can be used as a shorthand, 
+
+Since the rdf:type, the `a` is a 
+
+.Turtle file
+====
+....
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2006/vcard/ns#>:
+  a dc:Standard ;
+  rdf:label "Ontology for vCard"@en ;
+  dc:issued "2014-05-14"^^xsd:date .
+....
+====
+
 
 ==== RDF/XML
 
 RDF/XML was one of the first serialization formats, which is not
 
-The format is quite generic and flexible, which means that - even for small amounts of data - 
-there are multiple ways to express 
+The format is quite generic and flexible, which also means that - even for small amounts of data - 
+there are multiple ways to express the same data.
 
 As with general XML, whitespace and indentation does not matter
+
+.RDF/XML file
+====
+....
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/terms/">
+
+  <dc:Standard rdf:about="http://www.w3.org/2006/vcard/ns#">
+    <rdf:label xml:lang="en">Ontology for vCard</rdf:label>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-05-14</dc:issued>
+  </dc:Standard>
+
+</rdf:RDF>
+....
+====
+
 
 ==== JSON-LD
 
@@ -301,6 +357,16 @@ Sometimes a database and a template engine will do just fine.
 == DCAT
 
 Is a very simple, based on <<DCTERMS>>
+
+
+[plantuml]
+....
+title simplified model
+
+Catalog - Dataset 
+Dataset - Distribution
+
+....
 
 === DCAT 2
 
