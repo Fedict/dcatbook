@@ -653,7 +653,16 @@ to massive thesauri like https://op.europa.eu/en/web/eu-vocabularies/thesauri[EU
 
 == VCARD
 
-See also https://www.w3.org/TR/vcard-rdf/
+[cols="1h,1"]
+|===
+|Full name | vCard Ontology
+|See also | https://www.w3.org/TR/vcard-rdf/
+|Classes | Individual, Kind, Organization
+|Properties | fn, hasEmail
+|===
+
+Is a bit...messy. 
+
 
 == XSD
 
