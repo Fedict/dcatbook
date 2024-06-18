@@ -503,6 +503,12 @@ https://www.dcat-ap.ch/
 
 = Vocabularies
 
+The following section provides an overview of vocabularies that are commonly used with,
+or referred to by, DCAT-AP.
+
+Once again the aim is not to be complete,
+but to give a practical overview of the most important classes and properties within the context of data catalogs.
+
 == ADMS
 
 == DCTERMS
@@ -511,7 +517,7 @@ https://www.dcat-ap.ch/
 |===
 |Full name | Dublin Core Metadata Initiative Terms
 |See also | https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
-| Classes | FileFormat, Frequency, LicenseDocument, LinguisticSystem, Location, 
+|Classes | FileFormat, Frequency, LicenseDocument, LinguisticSystem, Location, 
             MediaType, MediaTypeOrExtent, PeriodOfTime, ProvenanceStatement, 
             RightsStatement, Standard
 |Properties | accessRights, accrualPeriodicity, available, conformsTo, contributor, 
@@ -533,7 +539,6 @@ but in this case it refers to Dublin in Ohio, USA.
 |===
 
 
-
 == FOAF
 
 [cols="1h,1"]
@@ -541,19 +546,55 @@ but in this case it refers to Dublin in Ohio, USA.
 |Full name | Friend-of-a-Friend
 |See also | http://xmlns.com/foaf/spec/
 |Classes | Agent, Document, Organization, Person
-|Properties | familyName, givenName, homepage, page, primaryTopic
+|Properties | familyName, givenName, homepage, name, page, primaryTopic
 |===
 
+
+A `Person` or an `Organization`, acting an an `Agent`
+`
+
 == LOCN
+
+[cols="1h,1"]
+|===
+|Full name | Location Core Vocabulary
+|See also | https://www.w3.org/ns/legacy_locn
+|Classes | 
+|Properties |
+|===
+
+Physical location
+
+A newer version is being developed under the SEMIC.eu umbrella as the
+https://semiceu.github.io/Core-Location-Vocabulary/[Core Location Vocabulary]
 
 == ORG
 
 
+== OWL
+
+[cols="1h,1"]
+|===
+|Full name | Web Ontology Language
+|See also |
+|Classes | 
+|Properties | sameAs, versionInfo
+|===
+
+`owl:versionInfo' is sometimes used to add version information to Datasets
+
+
+`owl:sameAs` is used to indicate that two subjects A and B are just two URIs describing the exact same thing.
+This may have some unintended side-effects when a reasoner comes into play, 
+because it implies that any statement about A is also a statement about B and vice versa,
+so use with care.
+
+An alternative approach is to use the `skos:exactMatch` property, 
+which merely indicates that different subjects match, without affecting reasoning.
+
+
 == PROV
 
-
-
-== ROV
 
 == Schema.org
 
@@ -565,13 +606,15 @@ but in this case it refers to Dublin in Ohio, USA.
 |===
 
 Schema.org is a massive collection of useful classes and properties.
+Founded by search engins Google, Yahoo, (Microsoft) Bing and Yandex, it features an
+interesting mix of e-commerce, health and
 
 DCAT originally used `schema:startDate` and `schema:endDate` to indicate the temporal coverage of a dataset,
 but DCAT version 2 added two very similar properties `dcat:startDate`and `dcat:endDate`.
 
 See https://github.com/w3c/dxwg/issues/85 for an in-depth discussion on why these properties were duplicated.
 
-Most readers only need to remember that  `dcat:`-version is the are preferred
+Most readers only need to remember that the `dcat:`-versions are now the preferred way to document start and end date.
 
 == SKOS
 
