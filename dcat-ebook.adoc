@@ -139,28 +139,46 @@ In a _graph_ or sometimes called a _context_
 And more recently, RDF* (RDF-Star)
 
 
-
 == Modelling
 
 === Classes and properties
 
+Classes are 
+For instance, a `Document`, a `Person`...
+
+Classes may be subclasses of other (parent) classes
+
+Properties
+Properties may be subproperties of other (parent) properties.
+
+Both class names and property names are case-sensitive.
+By convention, class name start with an uppercase and property names with a lowercase.
+
+[NOTE]
+====
+Note that properties are often not tightly coupled to classes,
+allowing them to be reused across completely different classes.
+====
 
 === Vocabularies and ontologies
 
 A _vocabulary_ is a well-defined collection of classes and properties.
 
 An _ontology_ is a vocabulary on steroids: not only does it contain definitions,
-it also adds some constraints.
+it also adds some logic constraints.
+For instance, an ontology may not allow that something is both a `Document` and an `Organization` at the same time.
 
 === Reusing vocabularies
 
 Vocabularies can be mixed and matched.
-In fact, when developping a new vocabulary, it is a best practice to reuse existing ones. 
-This reduces the learning curve and increases interoperability 
+In fact, it's even a best practice to reuse existing ones when developping new vocabularies:
+doing so reduces the learning curve for third parties
+and increases interoperability between different data sources.
 
+A great vocabularies are already available is the
 https://lov.linkeddata.es/[Linked Open Vocabularies] portal
 
-Vocabularies produced by/for administrations of the EU can be found on 
+Vocabularies specifically produced by / for administrations of the EU can be found on 
 https://joinup.ec.europa.eu/collection/semic-support-centre[SEMIC]
 
 === RDFS
@@ -199,16 +217,21 @@ Yes, the abbreviation should have been `WOL`, but `OWL` sounds so much better...
 
  If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck.
 
-Vocabularies and ontologies do not magically turn RDF data into pools of knowledge.
-It requires special tools to 
+Vocabularies and ontologies do not magically turn RDF data into vast pools of knowledge.
+It requires special tools, _reasoners_, to make assumptions and derive new facts
+from the RDFS / OWL
 
 == Validation
 
 While reasoners can be used to detect some inconsistencies in data, 
 they don't quite fit the bill as a general data quality tool.
 
-Even worse, reasoners may add statements and may come to logical but surprising results, 
+Even worse, reasoners can derive new statements and may come to logical but surprising results, 
 which is typically not the intended behavior when performing low-level quality checks.
+
+For instance, if an ontology specifies that a person can only live in 1 place at the same time,
+and we throw the statements `Jane lives in Paris` and `Jane lives in London` into the mix,
+a reasoner may conclude that `Paris` and `London` are actually the same place...
 
 === SHACL
 
