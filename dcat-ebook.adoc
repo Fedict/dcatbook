@@ -544,6 +544,7 @@ but in this case it refers to Dublin in Ohio, USA.
 [cols="1h,1"]
 |===
 |Full name | Friend-of-a-Friend
+|Namespace | http://xmlns.com/foaf/0.1/
 |See also | http://xmlns.com/foaf/spec/
 |Classes | Agent, Document, Organization, Person
 |Properties | familyName, givenName, homepage, name, page, primaryTopic
@@ -558,6 +559,7 @@ A `Person` or an `Organization`, acting an an `Agent`
 [cols="1h,1"]
 |===
 |Full name | Location Core Vocabulary
+|Namespace | http://www.w3.org/ns/locn#
 |See also | https://www.w3.org/ns/legacy_locn
 |Classes | 
 |Properties |
@@ -576,7 +578,8 @@ https://semiceu.github.io/Core-Location-Vocabulary/[Core Location Vocabulary]
 [cols="1h,1"]
 |===
 |Full name | Web Ontology Language
-|See also |
+|Namespace | http://www.w3.org/2002/07/owl#
+|See also | https://www.w3.org/TR/owl2-rdf-based-semantics/
 |Classes | 
 |Properties | sameAs, versionInfo
 |===
@@ -596,12 +599,13 @@ which merely indicates that different subjects match, without affecting reasonin
 == PROV
 
 
-== Schema.org
+== Schema
 
 [cols="1h,1"]
 |===
-|Full name | Simple Knowledge Organization System
-|See also | https://www.w3.org/2004/02/skos/
+|Full name | Schema.org
+|Namespace | https://schema.org/
+|See also | https://schema.org
 |Properties | endDate, startDate
 |===
 
@@ -621,7 +625,8 @@ Most readers only need to remember that the `dcat:`-versions are now the preferr
 [cols="1h,1"]
 |===
 |Full name | Simple Knowledge Organization System
-|See also | https://www.w3.org/2004/02/skos/
+|Namespace | http://www.w3.org/2004/02/skos/core#
+|See also | https://www.w3.org/TR/skos-reference/
 |Classes | Concept, ConceptScheme
 |Properties | altLabel, broader, hasTopConcept, inScheme, narrower, notation, 
             prefLabel, sameAs, topConceptOf
@@ -656,6 +661,7 @@ to massive thesauri like https://op.europa.eu/en/web/eu-vocabularies/thesauri[EU
 [cols="1h,1"]
 |===
 |Full name | vCard Ontology
+|Namespace | http://www.w3.org/2006/vcard/ns#
 |See also | https://www.w3.org/TR/vcard-rdf/
 |Classes | Individual, Kind, Organization
 |Properties | fn, hasEmail
@@ -666,6 +672,14 @@ Is a bit...messy.
 
 == XSD
 
+[cols="1h,1"]
+|===
+|Full name | XML Schema Part 2: Datatypes
+|Namespace | http://www.w3.org/2001/XMLSchema#
+|See also | http://www.w3.org/TR/xmlschema-2/
+|Classes | Individual, Kind, Organization
+|Properties | fn, hasEmail
+|===
 
 
 [appendix]
