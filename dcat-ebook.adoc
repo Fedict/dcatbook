@@ -289,14 +289,14 @@ Since the rdf:type, the `a` is a
 .Turtle file
 ====
 ....
-@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://www.w3.org/2006/vcard/ns#>:
-  a dc:Standard ;
+  a dct:Standard ;
   rdf:label "Ontology for vCard"@en ;
-  dc:issued "2014-05-14"^^xsd:date .
+  dct:issued "2014-05-14"^^xsd:date .
 ....
 ====
 
@@ -315,12 +315,12 @@ As with general XML, whitespace and indentation does not matter
 ....
 <?xml version="1.0" encoding="utf-8" ?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:dc="http://purl.org/dc/terms/">
+         xmlns:dct="http://purl.org/dc/terms/">
 
-  <dc:Standard rdf:about="http://www.w3.org/2006/vcard/ns#">
+  <dct:Standard rdf:about="http://www.w3.org/2006/vcard/ns#">
     <rdf:label xml:lang="en">Ontology for vCard</rdf:label>
-    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-05-14</dc:issued>
-  </dc:Standard>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-05-14</dct:issued>
+  </dct:Standard>
 
 </rdf:RDF>
 ....
@@ -511,6 +511,13 @@ https://www.dcat-ap.ch/
 |===
 |Full name | Dublin Core Metadata Initiative Terms
 |See also | https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
+| Classes | FileFormat, Frequency, LicenseDocument, LinguisticSystem, Location, 
+            MediaType, MediaTypeOrExtent, PeriodOfTime, ProvenanceStatement, 
+            RightsStatement, Standard
+|Properties | accessRights, accrualPeriodicity, available, conformsTo, contributor, 
+            created, creator, description, format, identifier, issued, language, 
+            license, modified, provenance, publisher, references, relation, rights, 
+            rightsHolder, source, spatial, subject, title, type
 |===
 
 
@@ -533,6 +540,8 @@ but in this case it refers to Dublin in Ohio, USA.
 |===
 |Full name | Friend-of-a-Friend
 |See also | http://xmlns.com/foaf/spec/
+|Classes | Agent, Document, Organization, Person
+|Properties | familyName, givenName, homepage, page, primaryTopic
 |===
 
 == LOCN
@@ -540,12 +549,40 @@ but in this case it refers to Dublin in Ohio, USA.
 == ORG
 
 
+== PROV
+
+
 
 == ROV
 
 == Schema.org
 
+[cols="1h,1"]
+|===
+|Full name | Simple Knowledge Organization System
+|See also | https://www.w3.org/2004/02/skos/
+|Properties | endDate, startDate
+|===
+
+Schema.org is a massive collection of useful classes and properties.
+
+DCAT originally used `schema:startDate` and `schema:endDate` to indicate the temporal coverage of a dataset,
+but DCAT version 2 added two very similar properties `dcat:startDate`and `dcat:endDate`.
+
+See https://github.com/w3c/dxwg/issues/85 for an in-depth discussion on why these properties were duplicated.
+
+Most readers only need to remember that  `dcat:`-version is the are preferred
+
 == SKOS
+
+[cols="1h,1"]
+|===
+|Full name | Simple Knowledge Organization System
+|See also | https://www.w3.org/2004/02/skos/
+|Classes | Concept, ConceptScheme
+|Properties | altLabel, broader, hasTopConcept, inScheme, narrower, notation, 
+            prefLabel, sameAs, topConceptOf
+|===
 
 It is very well suited to publish code lists and 
 
@@ -570,8 +607,6 @@ using the `skos:broadMatch`, `skos:narrowMatch`, `skos:closeMatch` and `skos:exa
 The EU Publications Office publishes various code lists and thesauri in SKOS,
 ranging from simple lists like the https://op.europa.eu/en/web/eu-vocabularies/authority-tables[Authority tables]
 to massive thesauri like https://op.europa.eu/en/web/eu-vocabularies/thesauri[EUROVOC]
-
-See also https://www.w3.org/TR/skos-primer/
 
 == VCARD
 
