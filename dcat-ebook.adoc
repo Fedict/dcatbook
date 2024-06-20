@@ -306,7 +306,7 @@ Modern RDF parsers also accept `PREFIX` instead of `@prefix`
 ==== RDF/XML
 
 RDF/XML was one of the first serialization formats, 
-which is not surprisingly since RDF was developped within the W3C consortium, 
+which is not surprisingly since RDF was developed within the W3C consortium, 
 which was also instrumental in the development of XML.
 
 The format is quite generic and flexible, which also means that - even for small amounts of data - 
@@ -351,7 +351,7 @@ but didn't gain much traction either.
 It probably didn't help that yet another (non-RDF) specification, Microdata, entered the market as well.
 
 Nowadays the legacy of RDFa lives on in the more popular https://ogp.me[Open Graph] protocol,
-developped and supported by Facebook to share info in a social media context. 
+developed and supported by Facebook to share info in a social media context. 
 OGP was inspired by RDFa, but it is less complicated and thus easier to implement.
 
 More information can be found in the https://www.w3.org/TR/rdfa-primer/[RDFa Primer],
@@ -544,7 +544,7 @@ but to give a practical overview of the most important classes and properties wi
 |===
 |Full name | Dublin Core Metadata Initiative Terms
 |Namespace | http://purl.org/dc/terms/ 
-|Prefix | dc or dcterms
+|Prefix | dcterms (or soemtimes dc or dct)
 |See also | https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
 |Classes | FileFormat, Frequency, LicenseDocument, LinguisticSystem, Location, 
             MediaType, MediaTypeOrExtent, PeriodOfTime, ProvenanceStatement, 
@@ -557,9 +557,13 @@ but to give a practical overview of the most important classes and properties wi
 
 DCAT leans heavily on the popular and well-supported Dublin Core vocabulary.
 
-The date properties `created`, `issued`, `modified` 
+The date properties `created`, `issued`, `modified`
 
-`title` and `description`
+The `title` and `description` properties are free text values to provide a meaningful title and description of a subject.
+It is not uncommon to provide titles and/or descriptions in multiple languages, 
+with a tag to indicate the language.
+Even when there is only one title or description, it is a good idea to add a language tag anyway,
+in case the value needs to be machine-translated or combined with other datasets in a multilingual context.
 
  `creator`, `contributor`, `rightsHolder`
 
@@ -598,8 +602,22 @@ but in this case it refers to Dublin in Ohio, USA.
 |===
 
 
+There is some overlap with other vocabularies like <<VCARD>> and <<Schema>>
+
 A `Person` or an `Organization`, acting an an `Agent`
 `
+
+== GeoSPARQL
+
+[cols="1h,1"]
+|===
+|Full name | GeoSPARQL Ontology
+|Namespace | http://www.opengis.net/ont/geosparql#
+|Prefix | geo (or gsp)
+|See also | http://www.opengis.net/doc/IS/geosparql/1.1
+|Data types | wkt
+|===
+
 
 == LOCN
 
@@ -615,6 +633,7 @@ A `Person` or an `Organization`, acting an an `Agent`
 
 Physical location
 
+It was developed under the ISA program
 A newer version is being developed under the SEMIC.eu umbrella as the
 https://semiceu.github.io/Core-Location-Vocabulary/[Core Location Vocabulary]
 
@@ -663,20 +682,19 @@ which merely indicates that different subjects match, without affecting reasonin
 |===
 |Full name | Schema.org
 |Namespace | https://schema.org/
-|Prefix | schema
+|Prefix | schema (or sdo)
 |See also | https://schema.org
 |Properties | endDate, startDate
 |===
 
 Schema.org is a massive collection of useful classes and properties.
-Founded by search engins Google, Yahoo, (Microsoft) Bing and Yandex, it features an
-interesting mix of e-commerce, health and
+Founded by search engins Google, Yahoo, (Microsoft) Bing and Yandex,
+it features an interesting mix of e-commerce, health and other topics .
 
 DCAT originally used `schema:startDate` and `schema:endDate` to indicate the temporal coverage of a dataset,
 but DCAT version 2 added two very similar properties `dcat:startDate`and `dcat:endDate`.
 
 See https://github.com/w3c/dxwg/issues/85 for an in-depth discussion on why these properties were duplicated.
-
 Most readers only need to remember that the `dcat:`-versions are now the preferred way to document start and end date.
 
 == SKOS
