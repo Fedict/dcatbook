@@ -739,10 +739,27 @@ Is a bit...messy.
 |Namespace | http://www.w3.org/2001/XMLSchema#
 |Prefix | xsd
 |See also | http://www.w3.org/TR/xmlschema-2/
-|Classes | Individual, Kind, Organization
-|Properties | fn, hasEmail
+|Data types | anyURI, date, dateTime, decimal, duration, integer 
 |===
 
+The `anyURI` can be used to indicate that a literal value must follow the format of a URI.
+For instance, the URL of a webpage or a mailto-link.
+This is much less used than one may expect, because e.g. a `dcat:landingPage` must be an RDF _resource_
+(which cannot take a data type), not a _literal_.
+
+The `integer` data type is used to express positive or negative numeric values without decimal point.
+It does not impose upper- or lower limits,
+so be careful when mapping xsd:integers to `int` data types in programming languages like PHP, Java or c,
+or SQL databases like Postgresql or MySQL. You may need to use bigger data types like `bigint` instead.
+  
+The same goes to some extent for the `decimal` data type for numeric values with a decimal point.
+It has arbitrary precision, meaning that a `float` or even a `double` might not cut it to 
+preserve all significant digits.
+
+The `date` and `dateTime` data types are heavily based on ISO8601, but not exactly the same in some corner cases.
+Both data types can take a timezone.
+
+The lesser known `duration` is used to document a period of time, measured in various units of time.
 
 [appendix]
 = Lists of identifiers
