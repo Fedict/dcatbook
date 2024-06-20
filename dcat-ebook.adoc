@@ -863,9 +863,47 @@ This can lead to undesired side-effects when quering / combining data.
 [appendix]
 = Tools
 
-== 
+
+The https://joinup.ec.europa.eu/collection/interoperability-test-bed-repository/solution/interoperability-test-bed[Interop TestBed]
+
+
+== RDF libraries
+
+=== Java
+https://jena.apache.org/[Apache Jena] and https://rdf4j.org/[Eclipse RDF4J]
+are two popular open source libraries to read and write RDF.
+Both include a triple store.
+
+Jena provides various built-in reasoners, while RDF4J has an excellent SHACL validation engine.
+
+=== Javascript / NodeJS
+
+https://comunica.dev/[Comunica] makes it easy to query
+
+=== Python, PHP
+
+The https://librdf.org/[Redland RDF Libraries] are a set of libraries and tools written in c,
+with bindings for Python and PHP
+
+== Triplestores
+
+In addition to the triplestores provided by Jena, RDF4J and LibRDF
+ 
+https://www.ontotext.com/products/graphdb/[Ontotext GraphDB]
+
+Oracle Spatial extension
+
+StarDog
+
+Virtuoso is a hybrid database, an open source version is available
+
+== Others
 
 To find the preferred prefix and/or namespaces: https://prefix.cc/
+
+The https://www.easyrdf.org/converter[EasyRDF] is an online tool to quickly convert
+(small) RDF files into another format.
+
 
 ==
 
