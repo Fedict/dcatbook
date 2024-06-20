@@ -1,8 +1,8 @@
-= The DCAT-AP book: Everything you never wanted to know about data catalogs, but had to learn anyway
+= Getting started with DCAT-AP: Everything you never wanted to know about data catalogs, but had to learn anyway
 :author: Bart Hanssens
 :email: <bart.hanssens@bosa.fgov.be>
 :url-repo: https://github.com/Fedict/dcatbook/
-:revdate: 2024-06-13
+:revdate: 2024-06-20
 :source-highlighter: roug
 :license-url: https://creativecommons.org/public-domain/cc0/
 :license-title: CC0
@@ -34,13 +34,7 @@ Bart contributed to the DCAT-AP specification, and the open source linked data l
 
 = Introduction to linked data
 
-== Problem statement 
-
-So to sum up, we want
-
-* unique, easy to generate identifiers
-* easy to find documentation
-
+The following sections contains an overview of 
 
 == Introduction to linked data
 
@@ -48,7 +42,7 @@ Resource Description Framework
 
 === Statements and triples ===
 
-RDF is about making _statements_, which are very basic sentences to describe something,
+RDF is all about making _statements_, which are very basic sentences to describe something,
 written down as a combination of exactly 3 parts (hence the name _triples_):
 
 `<subject> <predicate> <object>`
@@ -63,21 +57,20 @@ written down as a combination of exactly 3 parts (hence the name _triples_):
 
 Less is more...
 
-So by design it is possible to express _everything_, albeit not necessarily in the most concise way.
+So it is possible to express _everything_, albeit not necessarily in the most concise way.
 For example, it requires multiple statements to express a sentence like 
 `John has been working for ACME Corp since September 2015`
 
-Something like:
 ....
 <John> <is an employee in> <Contract>
 <ACME Corp> <is an employer in> <Contract>
 <Contract> <starts in> "9/2015"
 ....
 
-This also shows that statements can be linked, or more formally, 
-the `object` of one statement can be the `subject` of other statements and vice versa.
+This also shows that statements can easily be linked, or more formally, 
+the `object` of one statement can be the `subject` of numerous other statements and vice versa.
 
-=== Unique identifiers
+== Unique identifiers
 
 One way to make sure identifiers are unique, is to use a common database or registration system.
 
@@ -156,7 +149,7 @@ By convention, class name start with an uppercase and property names with a lowe
 
 [NOTE]
 ====
-Note that properties are often not tightly coupled to classes,
+Properties are often not tightly coupled to classes,
 allowing them to be reused across completely different classes.
 ====
 
@@ -172,26 +165,31 @@ For instance, an ontology may not allow that something is both a `Document` and 
 
 Vocabularies can be mixed and matched.
 In fact, it's even a best practice to reuse existing ones when developping new vocabularies:
-doing so reduces the learning curve for third parties
+doing so reduces the learning curve for other parties,
 and increases interoperability between different data sources.
 
-A great vocabularies are already available is the
+In order to reuse vocabularies, one should be able to _find_ them first.
+A great compilation of freely available vocabularies can be found on
 https://lov.linkeddata.es/[Linked Open Vocabularies] portal
 
-Vocabularies specifically produced by / for administrations of the EU can be found on 
-https://joinup.ec.europa.eu/collection/semic-support-centre[SEMIC]
+Another interesting source is https://joinup.ec.europa.eu/collection/semic-support-centre[SEMIC]:
+it contains vocabularies specifically produced by / for administrations of the European Union,
+including DCAT-AP.
 
-=== RDFS
+=== RDF Schema
 
-RDF Schema is 
+RDF Schema, or RDFS, is 
 
-Domain:
+==== Describing classes
+
+==== Describing properties
+
+`Domain` and `Range`
 
 Multiple domains are allowed.
 
 Some properties are indeed very generic, e.g. a `name` property makes sense on a `Person` class,
 but can be used on `Organizations` and `Images` as well.
-
 
 [NOTE]
 ====
@@ -241,11 +239,13 @@ Validation is relative new
 
 === File formats
 
-RDF data can be _serialized_ to several file formats
+RDF data can be _serialized_ to several file formats.
 
-This may come in handy when dealing with 
+This may come in handy when using RDF data in non-RDF data flows,
+though in practice - due to the flexible - 
+doing so may not exactly be a walk in the park.
 
-Let's compare a few common file formats using following set of statements
+Let's compare a few common file formats using the following set of statements
 
 .Set of statements
 ====
@@ -258,12 +258,12 @@ Let's compare a few common file formats using following set of statements
 
 ==== N-Triples
 
-This is a very simple text format, with every line containing one unabbreviated statement.
-It can easily be streamed, and works quite nice with well-know command-line tools like `grep` and `awk`.
+This is a very simple text format: every line contains exactly one one unabbreviated statement.
+It can easily be streamed, and works quite nice with well-know Unix command-line tools like `grep`.
 
 The downside is that N-Triples files are quite verbose,
 since the format does not allow the use of prefixes to abbreviate commonly used namespaces,
-nor does it provide options to group or structure statements in a visually appealing way ("pretty-printing").
+nor does the format provide options to group or structure statements in a visually appealing way ("pretty-printing").
 
 .N-Triples file
 ====
@@ -276,12 +276,12 @@ nor does it provide options to group or structure statements in a visually appea
 
 ==== Turtle
 
-Turtle is a slightly more complicated format, but is much more compact and easier to read.
-Namespace prefixes can be used, and some syntactic sugar is available to produce smaller and better looking files.
+Turtle is a slightly more complicated format, but it is much more compact and easier to read.
+Namespace prefixes can be used, and some syntactic sugar is available to produce smaller and `prettier` files.
 
 It is therefore often used for files that are likely to be viewed by subject experts, e.g. data models and thesauri.
 
-The following example shows how the statements can be (but don't have to be) nicely grouped together,
+The following example shows how the statements can (but don't have to) be nicely grouped together,
 how namespaces prefixes can be used as a shorthand, 
 
 Since the rdf:type, the `a` is a 
@@ -300,15 +300,19 @@ Since the rdf:type, the `a` is a
 ....
 ====
 
+Modern RDF parsers also accept `PREFIX` instead of `@prefix`
+
 
 ==== RDF/XML
 
-RDF/XML was one of the first serialization formats, which is not
+RDF/XML was one of the first serialization formats, 
+which is not surprisingly since RDF was developped within the W3C consortium, 
+which was also instrumental in the development of XML.
 
 The format is quite generic and flexible, which also means that - even for small amounts of data - 
 there are multiple ways to express the same data.
 
-As with general XML, whitespace and indentation does not matter
+As with general XML files, indentation does not matter.
 
 .RDF/XML file
 ====
@@ -331,9 +335,27 @@ As with general XML, whitespace and indentation does not matter
 
 === Embedding in webpages
 
-==== RDFa
+==== RDFa in HTML
 
-It is, however, becoming a less popular solution.
+https://www.w3.org/TR/rdfa-core/[RDF in Attributes], or RDFa, 
+allows structured but non-RDF formats like HTML to embed RDF data in a non-disruptive way.
+
+The benefit is that both the human-friendly HTML representation 
+and the machine-friendly data are present in the same webpage,
+which should make it easier to maintain both views.
+
+At one time there were high hopes for this format, 
+but most web content management systems lack decent support for RDFa.
+A less complex variant, https://www.w3.org/TR/rdfa-lite/[RDF-Lite], was introduced, 
+but didn't gain much traction either.
+It probably didn't help that yet another (non-RDF) specification, Microdata, entered the market as well.
+
+Nowadays the legacy of RDFa lives on in the more popular https://ogp.me[Open Graph] protocol,
+developped and supported by Facebook to share info in a social media context. 
+OGP was inspired by RDFa, but it is less complicated and thus easier to implement.
+
+More information can be found in the https://www.w3.org/TR/rdfa-primer/[RDFa Primer],
+and the https://rdfa.info/[RDFa portal].
 
 ==== JSON-LD in HTML
 
@@ -341,7 +363,7 @@ Search engines like Google benefit from structured data, and can use some
 
 See https://developers.google.com/search/docs/appearance/structured-data/dataset
 
-=== Triple stores
+== Storing RDF: Triple stores
 
 RDF statements are often stored in specialized data stores, called _triple stores_.
 
@@ -350,6 +372,11 @@ and create/read/update/delete operations via the SPARQL query and update languag
 
 It is, however, not always necessary to use a triple store to generate RDF data.
 Sometimes a database and a template engine will do just fine.
+
+== Querying and updating with SPARQL
+
+
+Those who are familiar with XML may recognize functions
 
 
 = Data Catalog (DCAT)
@@ -516,6 +543,8 @@ but to give a practical overview of the most important classes and properties wi
 [cols="1h,1"]
 |===
 |Full name | Dublin Core Metadata Initiative Terms
+|Namespace | http://purl.org/dc/terms/ 
+|Prefix | dc or dcterms
 |See also | https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
 |Classes | FileFormat, Frequency, LicenseDocument, LinguisticSystem, Location, 
             MediaType, MediaTypeOrExtent, PeriodOfTime, ProvenanceStatement, 
@@ -526,9 +555,26 @@ but to give a practical overview of the most important classes and properties wi
             rightsHolder, source, spatial, subject, title, type
 |===
 
+DCAT leans heavily on the popular and well-supported Dublin Core vocabulary.
 
+The date properties `created`, `issued`, `modified` 
+
+`title` and `description`
+
+ `creator`, `contributor`, `rightsHolder`
+
+`accessRights, `license`, `rights`, the latter two pointing to `LicenseDocument` and `RightsStatement` classes. 
+
+`conformsTo`, `Standard` class
+
+A more compelling name for `accrualPeriodicity` would be probably be update frequency,
+since the range of the property is a `Frequency` class.
+
+[NOTE]
+====
 Most people will associate Dublin with the capital of Ireland, 
 but in this case it refers to Dublin in Ohio, USA.
+====
 
 == DQV
 
@@ -545,6 +591,7 @@ but in this case it refers to Dublin in Ohio, USA.
 |===
 |Full name | Friend-of-a-Friend
 |Namespace | http://xmlns.com/foaf/0.1/
+|Prefix | foaf
 |See also | http://xmlns.com/foaf/spec/
 |Classes | Agent, Document, Organization, Person
 |Properties | familyName, givenName, homepage, name, page, primaryTopic
@@ -560,6 +607,7 @@ A `Person` or an `Organization`, acting an an `Agent`
 |===
 |Full name | Location Core Vocabulary
 |Namespace | http://www.w3.org/ns/locn#
+|Prefix | locn
 |See also | https://www.w3.org/ns/legacy_locn
 |Classes | 
 |Properties |
@@ -579,15 +627,17 @@ https://semiceu.github.io/Core-Location-Vocabulary/[Core Location Vocabulary]
 |===
 |Full name | Web Ontology Language
 |Namespace | http://www.w3.org/2002/07/owl#
+|Prefix | owl
 |See also | https://www.w3.org/TR/owl2-rdf-based-semantics/
 |Classes | 
 |Properties | sameAs, versionInfo
 |===
 
-`owl:versionInfo' is sometimes used to add version information to Datasets
+While OWL is used to describe ontologies, some OWL properties do pop up in datasets as well.
 
+`owl:versionInfo' is sometimes used to add a version number or label to datasets.
 
-`owl:sameAs` is used to indicate that two subjects A and B are just two URIs describing the exact same thing.
+`owl:sameAs` can be used to indicate that two different URIs are actually describing the exact same thing.
 This may have some unintended side-effects when a reasoner comes into play, 
 because it implies that any statement about A is also a statement about B and vice versa,
 so use with care.
@@ -595,8 +645,16 @@ so use with care.
 An alternative approach is to use the `skos:exactMatch` property, 
 which merely indicates that different subjects match, without affecting reasoning.
 
-
 == PROV
+
+[cols="1h,1"]
+|===
+|Full name | Provenance Ontology
+|Namespace | http://www.w3.org/ns/prov#
+|Prefix | prov
+|See also | https://www.w3.org/TR/prov-o/
+|Properties | endDate, startDate
+|===
 
 
 == Schema
@@ -605,6 +663,7 @@ which merely indicates that different subjects match, without affecting reasonin
 |===
 |Full name | Schema.org
 |Namespace | https://schema.org/
+|Prefix | schema
 |See also | https://schema.org
 |Properties | endDate, startDate
 |===
@@ -626,7 +685,8 @@ Most readers only need to remember that the `dcat:`-versions are now the preferr
 |===
 |Full name | Simple Knowledge Organization System
 |Namespace | http://www.w3.org/2004/02/skos/core#
-|See also | https://www.w3.org/TR/skos-reference/
+|Prefix | skos
+|See also | https://www.w3.org/TR/skos-reference/ and https://www.w3.org/TR/skos-primer/
 |Classes | Concept, ConceptScheme
 |Properties | altLabel, broader, hasTopConcept, inScheme, narrower, notation, 
             prefLabel, sameAs, topConceptOf
@@ -662,6 +722,7 @@ to massive thesauri like https://op.europa.eu/en/web/eu-vocabularies/thesauri[EU
 |===
 |Full name | vCard Ontology
 |Namespace | http://www.w3.org/2006/vcard/ns#
+|Prefix | vcard
 |See also | https://www.w3.org/TR/vcard-rdf/
 |Classes | Individual, Kind, Organization
 |Properties | fn, hasEmail
@@ -676,6 +737,7 @@ Is a bit...messy.
 |===
 |Full name | XML Schema Part 2: Datatypes
 |Namespace | http://www.w3.org/2001/XMLSchema#
+|Prefix | xsd
 |See also | http://www.w3.org/TR/xmlschema-2/
 |Classes | Individual, Kind, Organization
 |Properties | fn, hasEmail
@@ -694,10 +756,14 @@ Unfortunately names are unlikely to be unique - just imagine how many `John Smit
 so it's not always possible to 
 
 
+orcid
+
 === Organizations
 
 
-Opencorporates.org
+https://opencorporates.org[OpenCorporates] collects information from 
+
+ror
 
 === File formats
 
