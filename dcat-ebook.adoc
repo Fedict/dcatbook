@@ -498,6 +498,10 @@ See also https://github.com/SEMICeu/StatDCAT-AP
 
 == National variants
 
+Besides the application profiles listed before, several countries have created their own variants,
+which may slightly differ in the number of required properties.
+Some of them may not be actively developed anymore.
+
 === Belgium
 DCAT-AP-BE
 DCAT-AP-VL
@@ -505,8 +509,8 @@ DCAT-AP-VL
 === Finland
 https://www.avoindata.fi/en/dcat-ap
 
-=== Germany
-DCAT-AP.DE
+=== Germany: DCAT-AP.DE
+https://www.dcat-ap.de/def/dcatde/2.0/spec/
 
 === Italy: DCAT-AP_IT
 https://www.dati.gov.it/content/dcat-ap-it-v10-profilo-italiano-dcat-ap-0
@@ -530,13 +534,26 @@ https://www.dcat-ap.ch/
 
 = Vocabularies
 
-The following section provides an overview of vocabularies that are commonly used with,
+The following section provides an introduction to vocabularies that are commonly used with,
 or referred to by, DCAT-AP.
 
-Once again the aim is not to be complete,
-but to give a practical overview of the most important classes and properties within the context of data catalogs.
+Once again the aim is not to give a complete overview,
+but to provide some background information on the most important classes and properties
+within the context of data catalogs.
 
 == ADMS
+
+[cols="1h,1"]
+|===
+|Full name | Asset Description Metadata Schema
+|Namespace | http://www.w3.org/ns/adms#
+|Prefix | adms
+|See also | https://semiceu.github.io/ADMS/releases/2.00/
+|Classes | Identifier
+|Properties | identifier, sample 
+|===
+
+
 
 == DCTERMS
 
@@ -585,6 +602,8 @@ but in this case it refers to Dublin in Ohio, USA.
 [cols="1h,1"]
 |===
 |Full name | Data Quality Vocabulary
+|Namespace | http://www.w3.org/ns/dqv#.
+|Prefix | dqv
 |See also | https://www.w3.org/TR/vocab-dqv/
 |===
 
