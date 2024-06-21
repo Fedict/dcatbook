@@ -64,7 +64,8 @@ Enter `Resource Description Framework`, or RDF in short.
 
 === Statements and triples ===
 
- "Everything that comes in threes is perfect" (Aristotle, 4th century BCE)
+[quote, Aristotle, 4th century BC]
+Everything that comes in threes is perfect.
 
 RDF is all about making _statements_, which are very basic sentences to describe something,
 written down as a combination of exactly 3 parts (hence the name _triples_):
@@ -96,11 +97,13 @@ For example, it requires multiple statements to express a sentence like
 This also shows that statements can easily be linked, or more formally, 
 the `object` of one statement can be the `subject` of numerous other statements and vice versa.
 
-== Unique identifiers
+== Identifiers
 
-One way to make sure identifiers are unique, is to use a common database or registration system.
+Now, in order to be able to properly _link_ things, we need to _identify_ them first.
+Which in turn means that identifiers have to be created and maintained,
+preferably in a structured but decentralized way (so anyone can create identifiers).
 
-Luckily there is a decentralized solution, based on domain names.
+Sounds familiar ? Links pointing to webpages (URLs) are exactly that.
 
 ==== URI and URLs
 
@@ -181,19 +184,21 @@ For instance, an ontology may not allow that something is both a `Document` and 
 === Reusing vocabularies
 
 Vocabularies can be mixed and matched.
+
 In fact, it's even a best practice to reuse existing ones when developping new vocabularies:
 doing so reduces the learning curve for other parties,
 and increases interoperability between different data sources.
 
 In order to reuse vocabularies, one should be able to _find_ them first.
-A great compilation of freely available vocabularies can be found on
-https://lov.linkeddata.es/[Linked Open Vocabularies] portal
+A great compilation of freely available vocabularies is the 
+https://lov.linkeddata.es/[Linked Open Vocabularies] portal.
 
 Another interesting source is https://joinup.ec.europa.eu/collection/semic-support-centre[SEMIC]:
-it contains vocabularies specifically produced by / for administrations of the European Union,
+it contains vocabularies specifically developed by / for administrations of the European Union,
 including DCAT-AP.
 
 === RDF Schema
+
 
 RDF Schema, or RDFS, is 
 
@@ -915,21 +920,25 @@ with bindings for Python and PHP
 == Triplestores
 
 In addition to the triplestores provided by Jena, RDF4J and LibRDF
- 
-https://www.ontotext.com/products/graphdb/[Ontotext GraphDB]
 
-Oracle Spatial extension
+The following commercial data stores can be seemingly used with Eclipse RDF4J:
 
-StarDog
+* https://www.ontotext.com/products/graphdb/[Ontotext GraphDB]
+* https://www.oracle.com/database/graph/downloads.html[Oracle Graph server]
+* https://www.stardog.com/[StarDog]
 
-Virtuoso is a hybrid database, an open source version is available
+Another popular data store is https://virtuoso.openlinksw.com/[OpenLink Virtuoso],
+an open source version is available.
 
-== Others
 
-To find the preferred prefix and/or namespaces: https://prefix.cc/
+== Other tools
 
-The https://www.easyrdf.org/converter[EasyRDF] is an online tool to quickly convert
-(small) RDF files into another format.
+https://prefix.cc/[Prefix.cc] makes it easy find the preferred namespace prefix
+for a given namespace, and vice versa.
+
+https://www.easyrdf.org/converter[EasyRDF] is an online tool to quickly convert
+RDF snippets into another format. While it is useful for testing,
+it is not intended for converting large files.
 
 
 ==
