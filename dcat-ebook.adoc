@@ -7,7 +7,7 @@
 :license-url: https://creativecommons.org/public-domain/cc0/
 :license-title: CC0
 :docinfo: shared
-:doctype: docbook
+:doctype: book
 :toc: left
 
 .DRAFT
@@ -105,7 +105,7 @@ preferably in a structured but decentralized way (so anyone can create identifie
 
 Sounds familiar ? Links pointing to webpages (URLs) are exactly that.
 
-==== URI and URLs
+=== URI and URLs
 
 [NOTE]
 ====
@@ -118,7 +118,7 @@ it is considered bad practice to "create" URIs in someone elses domain.
 `http://example.com` and `https://example.com` (note the `s`) are *not* the same identifier.
 ====
 
-==== Dereferencable URIs
+=== Dereferencable URIs
 
 Dereferencable is a fancy way to say that a URI will actually return something meaningful when a browser 
 or another tool accesses it.
