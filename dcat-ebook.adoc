@@ -45,16 +45,22 @@ Bart contributed to the DCAT-AP specification, and the open source linked data l
 The following sections contains an quick introduction of RDF, 
 the framework underpinning linked open data on the semantic web.
 
-== Introduction to linked data
+== Linked data and the semantic web
 
 The World Wide Web (WWW) revolutionized the way information is shared across the globe:
 from sharing cutting-edge research results - its original purpose - to clickbait about celebrities,
 it's all on the web.
 
 Problem is, while we humas are smart enough to figure out what a web page is all about,
-HTML is mostly gibberish for those poor machines working for us.
+HTML is mostly gibberish to those poor machines automating things for us.
+Although browers can display images and text in a pleasing way,
+they really can't differentiate between a hotel review and a sports article, based on HTML alone. 
 
-Resource Description Framework
+So, clever minds came up with the idea of describing things in a meaningful (`semantic`) way,
+and serving this information over the same HTTP-driven network as the human-centic web.
+Including, of course, linking various sources together...
+
+Enter `Resource Description Framework`, or RDF in short.
 
 === Statements and triples ===
 
