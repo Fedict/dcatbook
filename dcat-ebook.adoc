@@ -19,9 +19,17 @@ This document is only a rough draft.
 = Preamble
 
 === About this book
- 
-The intention is not to be an exhaustive reference of each and every detail,
-but to be a practical guide for developers of data portals and other interested parties.
+
+This book intends to be a pratical introduction to the metadata specification "DCAT-AP",
+which is generally used (but not limited to) describing web services and 
+downloadable files on - mostly European - data portals.
+
+The intention is not to be an encyclopedic reference of all the nitty-gritty details,
+but to be offer a hands-on guide to developers and maintainers of data portals 
+and data suppliers.
+
+Some technical background is required.
+More specifically, a basic knowledge of XML is expected, since many examples will be provided in XML.
 
 === About the author
 
@@ -32,15 +40,25 @@ collecting and harmonizing metadata from various local, regional and federal sou
 
 Bart contributed to the DCAT-AP specification, and the open source linked data library Eclipse RDF4J.
 
-= Introduction to linked data
+= Introduction to RDF
 
-The following sections contains an overview of 
+The following sections contains an quick introduction of RDF, 
+the framework underpinning linked open data on the semantic web.
 
 == Introduction to linked data
+
+The World Wide Web (WWW) revolutionized the way information is shared across the globe:
+from sharing cutting-edge research results - its original purpose - to clickbait about celebrities,
+it's all on the web.
+
+Problem is, while we humas are smart enough to figure out what a web page is all about,
+HTML is mostly gibberish for those poor machines working for us.
 
 Resource Description Framework
 
 === Statements and triples ===
+
+ "Everything that comes in threes is perfect" (Aristotle, 4th century BCE)
 
 RDF is all about making _statements_, which are very basic sentences to describe something,
 written down as a combination of exactly 3 parts (hence the name _triples_):
@@ -48,7 +66,9 @@ written down as a combination of exactly 3 parts (hence the name _triples_):
 `<subject> <predicate> <object>`
 
 .Example of statements
+
 ====
+
 ....
 <John> <buys an> <apple>
 <Jane> <is born in> <Paris>
@@ -75,8 +95,6 @@ the `object` of one statement can be the `subject` of numerous other statements 
 One way to make sure identifiers are unique, is to use a common database or registration system.
 
 Luckily there is a decentralized solution, based on domain names.
-
-=== URN, URI, IRI
 
 ==== URI and URLs
 
@@ -105,12 +123,6 @@ A URI does not _have_ to be dereferencable in order to be useful, but it helps.
 ====
 
 
-==== Persistent URLs (PURL)
-
-A persistent URL (or PURL in short) is nothing more (and nothing less) than an URL that does not change.
-For how long ? Basically forever... once a PURL has been created, it is supposed to remain available and 
-unchanged until the dawn of time.
-
 === Literals
 
 Not everything has to be an identifier, often a simple value or _literal_ will do just fine:
@@ -121,9 +133,8 @@ book titles, timestamps, house numbers... are just a few random examples.
 Now, a very common use case for titles and descriptions is to have translations,
 or at least an indication of the language.
 
-
+Following the 
 Turns out there is a shortcut: literal values can take a language tag _or_ a datatype (not both).
-
 
 === ... and beyond that
 
@@ -799,7 +810,17 @@ Both data types can take a timezone.
 The lesser known `duration` is used to document a period of time, measured in various units of time.
 
 [appendix]
-= Lists of identifiers
+= More on identifiers
+
+=== URN, URI, IRI
+
+=== Persistent URLs (PURL)
+
+A persistent URL (or PURL in short) is nothing more (and nothing less) than an URL that does not change.
+For how long ? Basically forever... once a PURL has been created, it is supposed to remain available and 
+unchanged until the dawn of time.
+
+=== Skolem URI
 
 === Persons
 
