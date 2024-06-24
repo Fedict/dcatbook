@@ -280,7 +280,7 @@ Let's compare a few common file formats using the following set of statements
 
 ==== N-Triples
 
-This is a very simple text format: every line contains exactly one one unabbreviated statement.
+https://www.w3.org/TR/n-triples/[N-Triples] is a very simple text format: every line contains exactly one one unabbreviated statement.
 It can easily be streamed, and works quite nice with well-know Unix command-line tools like `grep`.
 
 The downside is that N-Triples files are quite verbose,
@@ -298,7 +298,7 @@ nor does the format provide options to group or structure statements in a visual
 
 ==== Turtle
 
-Turtle is a slightly more complicated format, but it is much more compact and easier to read.
+https://www.w3.org/TR/turtle/[Turtle] is a slightly more complicated format, but it is much more compact and easier to read.
 Namespace prefixes can be used, and some syntactic sugar is available to produce smaller and `prettier` files.
 
 It is therefore often used for files that are likely to be viewed by subject experts, e.g. data models and thesauri.
@@ -324,10 +324,9 @@ Since the rdf:type, the `a` is a
 
 Modern RDF parsers also accept `PREFIX` instead of `@prefix`
 
-
 ==== RDF/XML
 
-RDF/XML was one of the first serialization formats, 
+https://www.w3.org/TR/rdf-syntax-grammar/[RDF/XML] was one of the first serialization formats, 
 which is not surprisingly since RDF was developed within the W3C consortium, 
 which was also instrumental in the development of XML.
 
@@ -352,8 +351,20 @@ As with general XML files, indentation does not matter.
 ....
 ====
 
+==== Other
+
+Triples in XML is another XML format. It is hardly used anymore.
+
+Notation 3
+
+https://www.w3.org/TR/trig/[TriG]
+
+https://www.rdfhdt.org/[HDT]
+
 
 ==== JSON-LD
+
+https://www.w3.org/TR/json-ld11/[JSON for Linked Data]
 
 === Embedding in webpages
 
