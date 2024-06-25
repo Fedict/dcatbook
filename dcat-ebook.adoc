@@ -506,6 +506,11 @@ DELETE WHERE {
 
 Additional tips and tricks can be found on https://www.bobdc.com/categories/sparql/[Bob Ducharme's blog]
 
+== Federated queries
+
+Linked Data Fragments
+
+
 = Data Catalog (DCAT)
 
 == DCAT
@@ -1008,14 +1013,21 @@ The https://joinup.ec.europa.eu/collection/interoperability-test-bed-repository/
 
 === Java
 https://jena.apache.org/[Apache Jena] and https://rdf4j.org/[Eclipse RDF4J]
-are two popular open source libraries to read and write RDF.
-Both include a triple store.
+are two popular open source libraries to read, write and convert RDF data.
 
-Jena provides various built-in reasoners, while RDF4J has an excellent SHACL validation engine.
+Both include in-memory and on disk triple stores.
+Jena provides various a couple of built-in reasoners, 
+while RDF4J features an excellent SHACL validation engine.
 
 === Javascript / NodeJS
 
-https://comunica.dev/[Comunica] makes it easy to query
+https://rdf.js.org/[RDFJS] is a series of RDF libraries for Javascript
+
+https://comunica.dev/[Comunica] makes it easy to query RDF without having to be a seasoned RDF expert
+
+https://github.com/zazuko/rdf-validate-shacl[Zazuko Validate SHACL] is a SHACL engine
+
+https://github.com/rdf-ext/shacl-engine[SHACL Engine] is another SHACL engine, claiming to be much faster
 
 === Python, PHP
 
