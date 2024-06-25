@@ -2,7 +2,7 @@
 :author: Bart Hanssens
 :email: <bart.hanssens@bosa.fgov.be>
 :url-repo: https://github.com/Fedict/dcatbook/
-:revdate: 2024-06-20
+:revdate: 2024-06-25
 :source-highlighter: roug
 :license-url: https://creativecommons.org/public-domain/cc0/
 :license-title: CC0
@@ -226,12 +226,14 @@ Range:
 The class a range points to, does not have to be part of the same vocabulary:
 it is quite common to point to classes from well-known vocabularies.
 
-
 === OWL
 
-Web Ontology Language (OWL) is much more complex
+Web Ontology Language (OWL) is much more complex. 
 
-Yes, the abbreviation should have been `WOL`, but `OWL` sounds so much better... 
+It's not even _one_ language, but a family of dialects ranging from fairly easy
+to very expensive (in terms of computation power) to process.
+
+Oh and yes, the abbreviation should have been `WOL`, but `OWL` sounds so much better... 
 
 === Reasoning
 
@@ -239,7 +241,7 @@ Yes, the abbreviation should have been `WOL`, but `OWL` sounds so much better...
 
 Vocabularies and ontologies do not magically turn RDF data into vast pools of knowledge.
 It requires special tools, _reasoners_, to make assumptions and derive new facts
-from the RDFS / OWL
+from the RDFS / OWL rulesets.
 
 == Validation
 
@@ -399,7 +401,10 @@ It is a popular format for <<LDF>>
 |See also | https://www.w3.org/TR/json-ld11/
 |===
 
-[JSON for Linked Data]
+
+One benefit of JSON-LD is that it can be transformed ("framed") to a fixed shape resembling a "normal" JSON structure.
+This https://www.w3.org/TR/json-ld11-framing/[framing] is standardized.
+
 
 === Embedding in webpages
 
@@ -443,9 +448,63 @@ Sometimes a database and a template engine will do just fine.
 
 == Querying and updating with SPARQL
 
+When dealing with RDF, knowing https://www.w3.org/TR/sparql11-overview/[SPARQL]
+isn't an absolute requirement but it certainly helps.
 
-Those who are familiar with XML may recognize functions
+SPARQL consists of a https://www.w3.org/TR/sparql11-query/[query]
+and an https://www.w3.org/TR/sparql11-update/[update] part.
 
+The following query just selects the publication date and ID (URI) 
+of a book with title "Hello world".
+
+Note the use of a namespace prefix and placeholders `?s` and `?book`.
+The names of the placeholders can be freely chosen.
+
+.Simple SELECT query
+====
+....
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?book ?date
+WHERE { ?book dcterms:issued ?date .
+        ?book dcterms:title "Hello world" }
+....
+====
+
+Somewhat confusingly, SPARQL Update has no `UPDATE` operation at all,
+relying on a combination of `INSERT` and `DELETE` instead.
+
+The next query changes the property from `dcterms:title` to `dcterms:abstract` 
+if the title seems to be too long.
+
+.Update using INSERT/DELETE
+====
+....
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT { ?s dcterms:abstract ?text } 
+DELETE { ?s dcterms:title ?text }
+WHERE { 
+    ?s dcterms:title ?text .
+       FILTER (STRLEN(?title} > 100)) 
+    }
+....
+====
+
+
+.Simple DELETE
+====
+....
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE WHERE { 
+    ?s dcterms:title ?text .
+    ?s ?p ?o
+}
+....
+====
+
+Additional tips and tricks can be found on https://www.bobdc.com/categories/sparql/[Bob Ducharme's blog]
 
 = Data Catalog (DCAT)
 
@@ -628,7 +687,7 @@ within the context of data catalogs.
 [cols="1h,1"]
 |===
 |Full name | Dublin Core Metadata Initiative Terms
-|Namespace | http://purl.org/dc/terms/ 
+|Namespace | http://purl.org/dc/terms/
 |Prefix | dcterms (or soemtimes dc or dct)
 |See also | https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
 |Classes | FileFormat, Frequency, LicenseDocument, LinguisticSystem, Location, 
