@@ -280,7 +280,14 @@ Let's compare a few common file formats using the following set of statements
 
 ==== N-Triples
 
-https://www.w3.org/TR/n-triples/[N-Triples] is a very simple text format: every line contains exactly one one unabbreviated statement.
+[cols="1h,1"]
+|===
+|File extension | nt
+|MIME type | application/n-triples
+|See also | https://www.w3.org/TR/n-triples/
+|===
+
+N-Triples is a very simple text format: every line contains exactly one one unabbreviated statement.
 It can easily be streamed, and works quite nice with well-know Unix command-line tools like `grep`.
 
 The downside is that N-Triples files are quite verbose,
@@ -298,7 +305,14 @@ nor does the format provide options to group or structure statements in a visual
 
 ==== Turtle
 
-https://www.w3.org/TR/turtle/[Turtle] is a slightly more complicated format, but it is much more compact and easier to read.
+[cols="1h,1"]
+|===
+|File extension | ttl
+|MIME type | text/turtle
+|See also | https://www.w3.org/TR/turtle/
+|===
+
+Turtle is a slightly more complicated format, but it is much more compact and easier to read.
 Namespace prefixes can be used, and some syntactic sugar is available to produce smaller and `prettier` files.
 
 It is therefore often used for files that are likely to be viewed by subject experts, e.g. data models and thesauri.
@@ -306,7 +320,8 @@ It is therefore often used for files that are likely to be viewed by subject exp
 The following example shows how the statements can (but don't have to) be nicely grouped together,
 how namespaces prefixes can be used as a shorthand, 
 
-Since the rdf:type, the `a` is a 
+Since the `rdf:type` predicate is used quite frequently (to indicate that a subject is of a certain class),
+it can be abbreviated to just `a`.
 
 .Turtle file
 ====
@@ -322,11 +337,19 @@ Since the rdf:type, the `a` is a
 ....
 ====
 
-Modern RDF parsers also accept `PREFIX` instead of `@prefix`
+Modern RDF parsers also accept `PREFIX` instead of `@prefix`, 
+to align with SPARQL's way of writing prefixes.
 
 ==== RDF/XML
 
-https://www.w3.org/TR/rdf-syntax-grammar/[RDF/XML] was one of the first serialization formats, 
+[cols="1h,1"]
+|===
+|File extension | rdf (or xml)
+|MIME type | application/rdf+xml
+|See also | https://www.w3.org/TR/rdf-syntax-grammar/
+|===
+
+RDF/XML was one of the first serialization formats, 
 which is not surprisingly since RDF was developed within the W3C consortium, 
 which was also instrumental in the development of XML.
 
@@ -351,20 +374,32 @@ As with general XML files, indentation does not matter.
 ....
 ====
 
-==== Other
+==== Less common formats
 
-Triples in XML is another XML format. It is hardly used anymore.
+https://www.w3.org/TR/trig/[TriG] is an extension of Turtle.
+It is (re)gaining some interest since it is one of the two formats (the other being JSON-LD)
+to publish <<LDES-DCAT-AP>> feeds in.
 
-Notation 3
+https://www.w3.org/TeamSubmission/n3/[Notation 3] (or N3) is a superset of Turtle and TriG.
+It can also be used to express logic rules.
 
-https://www.w3.org/TR/trig/[TriG]
+https://www.w3.org/TR/n-quads/[N-Quads] is just <<N-Triples>> with a named graph as the fourth part of a statement.
 
-https://www.rdfhdt.org/[HDT]
+https://www.rdfhdt.org/[HDT] is a binary read-only format.
+If offers excellent compression and fast look-ups for simple queries, but it is not really standardized.
+It is a popular format for <<LDF>>
 
 
 ==== JSON-LD
 
-https://www.w3.org/TR/json-ld11/[JSON for Linked Data]
+[cols="1h,1"]
+|===
+|File extension | jsonld
+|MIME type | application/ld+json
+|See also | https://www.w3.org/TR/json-ld11/
+|===
+
+[JSON for Linked Data]
 
 === Embedding in webpages
 
