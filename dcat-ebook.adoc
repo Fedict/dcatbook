@@ -436,6 +436,7 @@ Search engines like Google benefit from structured data, and can use some
 
 See https://developers.google.com/search/docs/appearance/structured-data/dataset
 
+
 == Storing RDF: Triple stores
 
 RDF statements are often stored in specialized data stores, called _triple stores_.
@@ -930,6 +931,24 @@ Both data types can take a timezone.
 
 The lesser known `duration` is used to document a period of time, measured in various units of time.
 
+= Common mistakes in DCAT-AP
+
+== Not using the EU Publications Office controlled lists
+
+Some portals claim to adhere to DCAT-AP, but are in fact producing DCAT.
+
+== Incorrect date or duration formats
+
+== Mixing contact point IDs and organization IDs
+
+== Mixing IDs and URLs
+
+This can lead to undesired side-effects when quering / combining data.
+
+
+== Not setting explicit language tags
+
+
 [appendix]
 = More on identifiers
 
@@ -982,25 +1001,15 @@ but they too offer a https://www.iana.org/form/media-types[webform] to submit su
 
 Geonames.org
 
+
 [appendix]
-= Common mistakes in DCAT-AP
+= Converting data to RDF
 
+=== GRDDL in webpages
 
-=== Not using the EU Publications Office controlled lists
+=== CSV on the Web
 
-Some portals claim to adhere to DCAT-AP, but are in fact producing DCAT.
-
-=== Incorrect date or duration formats
-
-
-=== Mixing contact point IDs and organization IDs
-
-=== Mixing IDs and URLs
-
-This can lead to undesired side-effects when quering / combining data.
-
-
-=== Not setting explicit language tags
+=== RML.io
 
 [appendix]
 = Tools
@@ -1009,9 +1018,9 @@ This can lead to undesired side-effects when quering / combining data.
 The https://joinup.ec.europa.eu/collection/interoperability-test-bed-repository/solution/interoperability-test-bed[Interop TestBed]
 
 
-== RDF libraries
+=== RDF libraries
 
-=== Java
+==== Java
 https://jena.apache.org/[Apache Jena] and https://rdf4j.org/[Eclipse RDF4J]
 are two popular open source libraries to read, write and convert RDF data.
 
@@ -1019,7 +1028,7 @@ Both include in-memory and on disk triple stores.
 Jena provides various a couple of built-in reasoners, 
 while RDF4J features an excellent SHACL validation engine.
 
-=== Javascript / NodeJS
+==== Javascript / NodeJS
 
 https://rdf.js.org/[RDFJS] is a series of RDF libraries for Javascript
 
@@ -1029,12 +1038,12 @@ https://github.com/zazuko/rdf-validate-shacl[Zazuko Validate SHACL] is a SHACL e
 
 https://github.com/rdf-ext/shacl-engine[SHACL Engine] is another SHACL engine, claiming to be much faster
 
-=== Python, PHP
+==== Python, PHP
 
 The https://librdf.org/[Redland RDF Libraries] are a set of libraries and tools written in c,
 with bindings for Python and PHP
 
-== Triplestores
+=== Triplestores
 
 In addition to the triplestores provided by Jena, RDF4J and LibRDF
 
@@ -1048,7 +1057,7 @@ Another popular data store is https://virtuoso.openlinksw.com/[OpenLink Virtuoso
 an open source version is available.
 
 
-== Other tools
+=== Other tools
 
 https://prefix.cc/[Prefix.cc] makes it easy find the preferred namespace prefix
 for a given namespace, and vice versa.
@@ -1056,10 +1065,4 @@ for a given namespace, and vice versa.
 https://www.easyrdf.org/converter[EasyRDF] is an online tool to quickly convert
 RDF snippets into another format. While it is useful for testing,
 it is not intended for converting large files.
-
-
-==
-
-[index]
-== Index
 
