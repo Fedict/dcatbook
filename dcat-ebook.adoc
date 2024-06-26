@@ -582,7 +582,6 @@ See also https://semiceu.github.io/DCAT-AP/releases/3.0.0/
 
 === BRegDCAT-AP
 
-
 See also https://github.com/SEMICeu/BregDCAT-AP
 
 === CiteDCAT-AP
@@ -614,6 +613,10 @@ See also https://zenodo.org/records/10955559
 === HealthDCAT-AP
 
 See also https://healthdcat-ap.github.io/
+
+=== LanguageDCAT-AP
+
+See also https://language-data-space.ec.europa.eu/
 
 === MLDCAT-AP
 
