@@ -580,6 +580,10 @@ See also https://semiceu.github.io/DCAT-AP/releases/3.0.0/
 
 == Various specializations
 
+=== BotDCAT-AP
+
+See also https://ceur-ws.org/Vol-1927/paper6.pdf
+
 === BRegDCAT-AP
 
 See also https://github.com/SEMICeu/BregDCAT-AP
