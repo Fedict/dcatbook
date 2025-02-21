@@ -672,6 +672,9 @@ https://docs.dataportal.se/dcat/en/
 === Switserland: DCAT-AP CH
 https://www.dcat-ap.ch/
 
+=== USA: DCAT-US
+https://doi-do.github.io/dcat-us/
+
 = Vocabularies
 
 The following section provides an introduction to vocabularies that are commonly used with,
