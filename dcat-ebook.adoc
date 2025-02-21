@@ -601,6 +601,11 @@ Implementing Regulation 2023/138/EU of 21 December 2022 laying down a list of sp
 
 See also https://semiceu.github.io/DCAT-AP/releases/2.2.0-hvd/
 
+=== DCAT-eOS-AP
+A Metadata Schema for Use in Nuclear Monitoring Projects with Applications to Other DOE Mission
+
+See also https://www.osti.gov/servlets/purl/1830897/
+
 === EPOS-DCAT-AP
 
 See also https://epos-eu.github.io/EPOS-DCAT-AP/
